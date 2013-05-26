@@ -39,7 +39,7 @@ class SVGPlugin(CLTransformer):
             return
 
         source = File.make_temp(text)
-        (source_root, source_ext) = os.path.splitext(unicode(source))
+        (source_root, source_ext) = os.path.splitext(unicode(resource.source_file))
 
         png_in_source = source_root + u'.png'
         if os.path.exists(png_in_source):
