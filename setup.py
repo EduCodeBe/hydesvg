@@ -4,7 +4,7 @@
 from setuptools import setup
 
 setup(name='hydesvg',
-      version='0.1',
+      version='0.2',
       description='RMLL extensions for Hyde and Jinja2',
       author='Julien Pivotto',
       #long_description='',
