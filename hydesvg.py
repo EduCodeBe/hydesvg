@@ -39,15 +39,20 @@ class SVGPlugin(CLTransformer):
             return
 
         source = File.make_temp(text)
+        (source_root, source_ext) = os.path.splitext(unicode(source))
+
+        png_in_source = source_root + u'.png'
+        if os.path.exists(png_in_source):
+            return text
+
         target = self.site.config.deploy_root_path.child(
                                 resource.relative_deploy_path)
         (root, ext) = os.path.splitext(target)
+        target = root + u'.png'
+
         d = os.path.dirname(target)
         if not os.path.exists(d):
             os.makedirs(d)
-        target = root + u'.png'
-        print "SOURCE", source
-        print "TARGET", target
         args = [u'inkscape']
         args.extend(['-z'])
         args.extend(['-f', unicode(source)])
